@@ -47,7 +47,9 @@ while true; do
   esac
   case $selection in
     1 )
-      dialog $DIALOG_COMMON --exit-label Back --textbox discord_qr.txt 80 60
+      clear
+      cat discord_qr.txt
+      read -n 1 -s -r -p "Press any key to continue...";printf "\n"
       ;;
     2 )
       clear
