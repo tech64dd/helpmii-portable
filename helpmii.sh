@@ -32,7 +32,7 @@ while true; do
   esac
   case $selection in
     1 )
-      dialog --title "Join the Discord" --msgbox "To join the Wii Linux Discord server navigate to \nhttps://example.com/discord\non a modern device" 7 52
+      dialog --title "Join the Discord" --msgbox "To join the Wii Linux Discord server navigate to \nhttps://discord.com/invite/XfMHMhSQ8d\non a modern device" 7 52
       ;;
     2 )
       clear
