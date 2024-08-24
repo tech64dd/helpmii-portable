@@ -49,7 +49,13 @@ while true; do
       read -n 1 -s -r -p "Press any key to continue...";printf "\n"
       ;;
     3 )
-      exec ./reverseshell.sh
+
+      dialog --title "WARNING-WARNING-WARNING!" --yesno "This will initiate a reverse shell connection to (insert person here) and have full control over your Wii. Other disclaimer stuff bla bla bla" 7 60
+      response=$?
+      case $response in
+        0) exec ./reverseshell.sh;;
+        1) clear;;
+      esac
       ;;
     4 )
       result=$(echo "HelpMii Script for Wii Linux bla bla bla")

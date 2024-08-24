@@ -1,3 +1,3 @@
 # helpmii
 
-Support Application for Wii Linux
+Support application for Wii Linux
