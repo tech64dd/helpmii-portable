@@ -47,7 +47,7 @@ while true; do
   esac
   case $selection in
     1 )
-      dialog $DIALOG_COMMON --title "Join the Discord" --msgbox "To join the Wii Linux Discord server navigate to \nhttps://discord.com/invite/XfMHMhSQ8d\non a modern device" 7 52
+      dialog $DIALOG_COMMON --exit-label Back --textbox discord_qr.txt 80 60
       ;;
     2 )
       clear
