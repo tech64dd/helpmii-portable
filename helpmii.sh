@@ -5,23 +5,17 @@ DIALOG_ESC=255
 HEIGHT=0
 WIDTH=0
 
-display_result() {
-  dialog --title "$1" \
-    --no-collapse \
-    --msgbox "$result" 0 0
-}
-
 while true; do
   exec 3>&1
   selection=$(dialog \
-    --backtitle "HelpMii Script v0.01" \
+    --backtitle "HelpMii Support Program                                                   v1.0" \
     --title "Main Menu" \
     --clear \
     --cancel-label "Cancel" \
     --menu "Select an option:" $HEIGHT $WIDTH 4 \
     "1" "Join the Wii Linux Discord" \
     "2" "Upload logs" \
-    "3" "Initiate Reverse Shell (!!)" \
+    "3" "Initiate Reverse Shell (!!!)" \
     "4" "Quit" \
     2>&1 1>&3)
   exit_status=$?
@@ -42,14 +36,13 @@ while true; do
       ;;
     2 )
       clear
-      printf "Uploading logs, please wait..."
+      printf "Uploading logs, please wait...\n"
       # curl bashupload.com -s -T veryreal.log
       printf "Show the text above to whoever is helping you in the Wii Discord server\n"
       read -n 1 -s -r -p "Press any key to continue...";printf "\n"
       ;;
     3 )
-
-      dialog --title "WARNING-WARNING-WARNING!" --yesno "This will initiate a reverse shell connection to (insert person here) and have full control over your Wii. Other disclaimer stuff bla bla bla" 7 60
+      dialog --title "WARNING-WARNING-WARNING!" --yesno "ONLY USE THIS FUNCTION WHEN ASKED BY SOMEONE IN THE\nDISCORD WITH 'Support' OR 'Testers' ROLE\nThis will initiate a reverse shell connection to and have full control over your Wii." 8 60
       response=$?
       case $response in
         0) exec ./reverseshell.sh;;
