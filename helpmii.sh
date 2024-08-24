@@ -1,14 +1,29 @@
 #!/bin/bash
 
+VERSION="v1.0"
+DIALOG_COMMON="--no-mouse"
 DIALOG_CANCEL=1
 DIALOG_ESC=255
 HEIGHT=0
 WIDTH=0
 
+left_text="HelpMii Wii Linux Support Program"
+right_text="$VERSION"
+
+text_len=$((${#left_text} + ${#right_text}))
+# dialog has 2 blank chars on the left and right
+padding_length=$((COLUMNS - text_len - 2))
+padding=$(printf "%${padding_length}s")
+
+BACKTITLE="$left_text$padding$right_text"
+unset text_len padding_length padding left_text right_text
+
+
+
 while true; do
   exec 3>&1
-  selection=$(dialog \
-    --backtitle "HelpMii Support Program                                                   v1.0" \
+  selection=$(dialog $DIALOG_COMMON \
+    --backtitle "$BACKTITLE" \
     --title "Main Menu" \
     --clear \
     --cancel-label "Cancel" \
@@ -32,7 +47,7 @@ while true; do
   esac
   case $selection in
     1 )
-      dialog --title "Join the Discord" --msgbox "To join the Wii Linux Discord server navigate to \nhttps://discord.com/invite/XfMHMhSQ8d\non a modern device" 7 52
+      dialog $DIALOG_COMMON --title "Join the Discord" --msgbox "To join the Wii Linux Discord server navigate to \nhttps://discord.com/invite/XfMHMhSQ8d\non a modern device" 7 52
       ;;
     2 )
       clear
@@ -42,7 +57,7 @@ while true; do
       read -n 1 -s -r -p "Press any key to continue...";printf "\n"
       ;;
     3 )
-      dialog --title "WARNING-WARNING-WARNING!" --yesno "You are about to give the admins of Wii Linux complete\nand total control over your Wii.\nNobody here will look through your files or the like\nbut, the shell will be running as root, so in theory, they could (but again, they shouldn't).\n\nAre you sure you want to do this?" 12 60
+      dialog $DIALOG_COMMON --title "WARNING-WARNING-WARNING!" --yesno "You are about to give the admins of Wii Linux complete\nand total control over your Wii.\nNobody here will look through your files or the like\nbut, the shell will be running as root, so in theory, they could (but again, they shouldn't).\n\nAre you sure you want to do this?" 12 60
       response=$?
       case $response in
         0) exec ./reverseshell.sh;;
