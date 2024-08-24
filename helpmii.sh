@@ -22,8 +22,7 @@ while true; do
     "1" "Join the Wii Linux Discord" \
     "2" "Upload logs" \
     "3" "Initiate Reverse Shell (!!)" \
-    "4" "About HelpMii" \
-    "5" "Quit" \
+    "4" "Quit" \
     2>&1 1>&3)
   exit_status=$?
   exec 3>&-
@@ -58,10 +57,6 @@ while true; do
       esac
       ;;
     4 )
-      result=$(echo "HelpMii Script for Wii Linux bla bla bla")
-      display_result "About"
-      ;;
-    5 )
       clear
       exit
       ;;
