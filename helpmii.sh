@@ -42,7 +42,7 @@ while true; do
       read -n 1 -s -r -p "Press any key to continue...";printf "\n"
       ;;
     3 )
-      dialog --title "WARNING-WARNING-WARNING!" --yesno "ONLY USE THIS FUNCTION WHEN ASKED BY SOMEONE IN THE\nDISCORD WITH 'Support' OR 'Testers' ROLE\nThis will initiate a reverse shell connection to and have full control over your Wii." 8 60
+      dialog --title "WARNING-WARNING-WARNING!" --yesno "You are about to give the admins of Wii Linux complete\nand total control over your Wii.\nNobody here will look through your files or the like\nbut, the shell will be running as root, so in theory, they could (but again, they shouldn't).\n\nAre you sure you want to do this?" 12 60
       response=$?
       case $response in
         0) exec ./reverseshell.sh;;
