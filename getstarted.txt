@@ -41,83 +41,83 @@ Your install of Wii Linux ArchPOWER comes with NetworkManager by default.
 You can use this to set up networking.
 
 Firstly, you'll want to verify that your network adapter is detected:
-	To check if it's supported, you can run `ip a` from the shell.
+        To check if it's supported, you can run `ip a` from the shell.
         
-	'wlan0' is the internal WiFi adapter (Broadcom 4318).
+        'wlan0' is the internal WiFi adapter (Broadcom 4318).
 
-	If you see a device name starting with 'en', or 'eth', that's your
-	USB Ethernet adapter.
+        If you see a device name starting with 'en', or 'eth', that's your
+        USB Ethernet adapter.
 
-	If you see a device name starting with 'wl' that is NOT 'wlan0',
-	that's your USB WiFi adapter.
+        If you see a device name starting with 'wl' that is NOT 'wlan0',
+        that's your USB WiFi adapter.
 
-	If you don't see it, your adapter may not be supported by this
-	kernel version.  You may want to contact support[3] if you
-	want to check.
-	
+        If you don't see it, your adapter may not be supported by this
+        kernel version.  You may want to contact support[3] if you
+        want to check.
+        
 Here's a few cases for how you could do so:
   - Connection via Ethernet with DHCP
         It should just work out of the box, assuming that your
         USB NIC is supported by the Linux 4.5 kernel.
 
-	If it's not working, check that the cable is clicked all the way
+        If it's not working, check that the cable is clicked all the way
         in on both sides.  If it's still not working, or you don't see
-	the interface name, contact support[3].
+        the interface name, contact support[3].
 
   - Connection via Ethernet with a static address
-	You can configure this with NetworkManager.
+        You can configure this with NetworkManager.
 
-	Firstly, check that your NIC is supported.  If it is, then you should
-	see it's interface.
+        Firstly, check that your NIC is supported.  If it is, then you should
+        see it's interface.
 
-	If so, then you can set it up like you would any other
-	Ethernet interface, using `nmcli` or `nmtui`.
+        If so, then you can set it up like you would any other
+        Ethernet interface, using `nmcli` or `nmtui`.
 
-	An example in `nmtui`:
-	1.  Start `nmtui`.
-	2.  Choose 'Edit a connection'.
-	3.  Pick your adapter - probably 'Wired connection 1'.
-	4.  Select 'IPv4 CONFIGURATION', set the type to '<Manual>'.
-	5.  To the right, select '<Show>'.
-	6.  To the right of 'Addresses', select '<Add...>'.
-	7.  Enter your desired IP address and subnet mask, e.g.
-	    192.168.0.10/24
-	8.  To the right of gateway, enter your desired gateway/router, e.g.
-	    192.168.0.1
-	9.  (optional) To the right of DNS servers, select '<Add...>'.
-	10. (optional) Enter your desired DNS server.
-	11. Move down to the bottom and select '<OK>' to save your changes.
+        An example in `nmtui`:
+        1.  Start `nmtui`.
+        2.  Choose 'Edit a connection'.
+        3.  Pick your adapter - probably 'Wired connection 1'.
+        4.  Select 'IPv4 CONFIGURATION', set the type to '<Manual>'.
+        5.  To the right, select '<Show>'.
+        6.  To the right of 'Addresses', select '<Add...>'.
+        7.  Enter your desired IP address and subnet mask, e.g.
+            192.168.0.10/24
+        8.  To the right of gateway, enter your desired gateway/router, e.g.
+            192.168.0.1
+        9.  (optional) To the right of DNS servers, select '<Add...>'.
+        10. (optional) Enter your desired DNS server.
+        11. Move down to the bottom and select '<OK>' to save your changes.
 
   - Connection via builtin (b43) WiFi with DHCP
-	You can configure this with NetworkManager.
+        You can configure this with NetworkManager.
 
-	You can set up WiFi like you would with any other WiFi adapter
-	under NetworkManager, using `nmcli` or `nmtui`.
-	
-	Here's how you would do it under `nmtui`.
-	1.  Start `nmtui`.
-	2.  Chose 'Activate a connection'.
-	3.  Chose your WiFi network, under the Wi-Fi section.
-	    Don't see anything?  Try pressing 'ESC' on your keyboard a few
-	    times to exit out of `nmtui`, then try starting it back up again.
-	    Still don't see it?  Contact support[3].
-	4.  If your network requires a password, NetworkManager will prompt
-	    you for it.  Enter it, and it should connect.
-	    If it didn't connect (asking you for the password again), you
-	    likely typed it wrong.  If it keeps doing this, but you're
-	    sure that you entered it correctly, contact support[3].
-	5.  You're now connected!
-	    Exit `nmtui` by following the path, or press 'ESC' a few times.
+        You can set up WiFi like you would with any other WiFi adapter
+        under NetworkManager, using `nmcli` or `nmtui`.
+        
+        Here's how you would do it under `nmtui`.
+        1.  Start `nmtui`.
+        2.  Chose 'Activate a connection'.
+        3.  Chose your WiFi network, under the Wi-Fi section.
+            Don't see anything?  Try pressing 'ESC' on your keyboard a few
+            times to exit out of `nmtui`, then try starting it back up again.
+            Still don't see it?  Contact support[3].
+        4.  If your network requires a password, NetworkManager will prompt
+            you for it.  Enter it, and it should connect.
+            If it didn't connect (asking you for the password again), you
+            likely typed it wrong.  If it keeps doing this, but you're
+            sure that you entered it correctly, contact support[3].
+        5.  You're now connected!
+            Exit `nmtui` by following the path, or press 'ESC' a few times.
 
   - Connection via builtin (b43) WiFi with a static address
-	Follow the guide for setting it up with DHCP above, then
-	once done, follow the guide for setting up static Ethernet,
-	replacing 'Wired connection 1' with your WiFi network name.
+        Follow the guide for setting it up with DHCP above, then
+        once done, follow the guide for setting up static Ethernet,
+        replacing 'Wired connection 1' with your WiFi network name.
 
   - Connection via USB WiFi (DHCP or static)
-	Follow the above guides, but while connecting to the WiFi,
-	ensure to chose the network listed under your USB adapter,
-	rather than the builtin one.
+        Follow the above guides, but while connecting to the WiFi,
+        ensure to chose the network listed under your USB adapter,
+        rather than the builtin one.
 
 3. Contacting support
 =====================
