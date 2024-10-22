@@ -29,9 +29,10 @@ while true; do
     --cancel-label "Cancel" \
     --menu "Select an option:" $HEIGHT $WIDTH 4 \
     "1" "Join the Wii Linux Discord" \
-    "2" "Upload logs" \
-    "3" "Initiate Reverse Shell (!!!)" \
-    "4" "Quit" \
+    "2" "User Guides" \
+    "3" "Upload logs" \
+    "4" "Initiate Reverse Shell (!!!)" \
+    "5" "Quit" \
     2>&1 1>&3)
   exit_status=$?
   exec 3>&-
@@ -52,13 +53,16 @@ while true; do
       read -n 1 -s -r -p "Press any key to continue...";printf "\n"
       ;;
     2 )
+      exec ./manualsel.sh
+      ;;
+    3 )
       clear
       printf "Uploading logs, please wait...\n"
       # curl bashupload.com -s -T veryreal.log
       printf "Show the text above to whoever is helping you in the Wii Discord server\n"
       read -n 1 -s -r -p "Press any key to continue...";printf "\n"
       ;;
-    3 )
+    4 )
       dialog $DIALOG_COMMON --title "WARNING-WARNING-WARNING!" --yesno "You are about to give the admins of Wii Linux complete\nand total control over your Wii.\nNobody here will look through your files or the like\nbut, the shell will be running as root, so in theory, they could (but again, they shouldn't).\n\nAre you sure you want to do this?" 12 60
       response=$?
       case $response in
@@ -66,7 +70,7 @@ while true; do
         1) clear;;
       esac
       ;;
-    4 )
+    5 )
       clear
       exit
       ;;
