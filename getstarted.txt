@@ -1,0 +1,145 @@
+Getting Started With Wii Linux
+==============================
+
+Welcome to your new Wii Linux install!  This guide will show you how
+to use a few basic functions of your system.
+
+A few notes on the formatting of this guide:
+
+- A word with brakckets, like "this[5]" refers to a section number.
+  If you want more info about that topic, skip to that section of the guide.
+
+- You may use the Page Up and Page Down keys on your keyboard to scroll
+  around quickly, or use the arrow keys to move around one line at a time.
+
+- A word (or set of words) wrapped in `backticks` is a command that you can
+  execute on your system.
+
+
+1. Basic system navigation
+==========================
+
+To change between TTYs, press Alt+F1 through Alt+F12 on your keyboard.
+The system boots up on TTY1 (Alt+F1).
+
+You'll need to know how to do this for the rest of the guide, so practice
+with it now if you need it.  Press Alt+F2 to switch to TTY2, then Alt+F1
+to get back to this manual.
+
+For the rest of the guide, if you would like to run a command, while keeping
+the guide running, you can, and should, switch TTYs to do so, rather than
+exiting and re-entering the guide every time.
+
+To exit this guide at any time, press 'Q' on your keyboard.
+
+
+2. Setting up networking access
+===============================
+
+You'll probably want to give your Wii access to the internet.
+Your install of Wii Linux ArchPOWER comes with NetworkManager by default.
+You can use this to set up networking.
+
+Firstly, you'll want to verify that your network adapter is detected:
+	To check if it's supported, you can run `ip a` from the shell.
+        
+	'wlan0' is the internal WiFi adapter (Broadcom 4318).
+
+	If you see a device name starting with 'en', or 'eth', that's your
+	USB Ethernet adapter.
+
+	If you see a device name starting with 'wl' that is NOT 'wlan0',
+	that's your USB WiFi adapter.
+
+	If you don't see it, your adapter may not be supported by this
+	kernel version.  You may want to contact support[3] if you
+	want to check.
+	
+Here's a few cases for how you could do so:
+  - Connection via Ethernet with DHCP
+        It should just work out of the box, assuming that your
+        USB NIC is supported by the Linux 4.5 kernel.
+
+	If it's not working, check that the cable is clicked all the way
+        in on both sides.  If it's still not working, or you don't see
+	the interface name, contact support[3].
+
+  - Connection via Ethernet with a static address
+	You can configure this with NetworkManager.
+
+	Firstly, check that your NIC is supported.  If it is, then you should
+	see it's interface.
+
+	If so, then you can set it up like you would any other
+	Ethernet interface, using `nmcli` or `nmtui`.
+
+	An example in `nmtui`:
+	1.  Start `nmtui`.
+	2.  Choose 'Edit a connection'.
+	3.  Pick your adapter - probably 'Wired connection 1'.
+	4.  Select 'IPv4 CONFIGURATION', set the type to '<Manual>'.
+	5.  To the right, select '<Show>'.
+	6.  To the right of 'Addresses', select '<Add...>'.
+	7.  Enter your desired IP address and subnet mask, e.g.
+	    192.168.0.10/24
+	8.  To the right of gateway, enter your desired gateway/router, e.g.
+	    192.168.0.1
+	9.  (optional) To the right of DNS servers, select '<Add...>'.
+	10. (optional) Enter your desired DNS server.
+	11. Move down to the bottom and select '<OK>' to save your changes.
+
+  - Connection via builtin (b43) WiFi with DHCP
+	You can configure this with NetworkManager.
+
+	You can set up WiFi like you would with any other WiFi adapter
+	under NetworkManager, using `nmcli` or `nmtui`.
+	
+	Here's how you would do it under `nmtui`.
+	1.  Start `nmtui`.
+	2.  Chose 'Activate a connection'.
+	3.  Chose your WiFi network, under the Wi-Fi section.
+	    Don't see anything?  Try pressing 'ESC' on your keyboard a few
+	    times to exit out of `nmtui`, then try starting it back up again.
+	    Still don't see it?  Contact support[3].
+	4.  If your network requires a password, NetworkManager will prompt
+	    you for it.  Enter it, and it should connect.
+	    If it didn't connect (asking you for the password again), you
+	    likely typed it wrong.  If it keeps doing this, but you're
+	    sure that you entered it correctly, contact support[3].
+	5.  You're now connected!
+	    Exit `nmtui` by following the path, or press 'ESC' a few times.
+
+  - Connection via builtin (b43) WiFi with a static address
+	Follow the guide for setting it up with DHCP above, then
+	once done, follow the guide for setting up static Ethernet,
+	replacing 'Wired connection 1' with your WiFi network name.
+
+  - Connection via USB WiFi (DHCP or static)
+	Follow the above guides, but while connecting to the WiFi,
+	ensure to chose the network listed under your USB adapter,
+	rather than the builtin one.
+
+3. Contacting support
+=====================
+
+Should you need help with your Wii Linux install, we're here to help!
+Run the `helpmii` program for steps for how to get help, or, should
+you be unable to do so, join the Discord server linked on wii-linux.org!
+
+
+Legal Info
+==========
+
+The information in this guide is provided 'AS-IS' without any warranty,
+express or implied, including but not limited to any implied
+warranties of merchantability, fitness for a particular purpose, or
+non-infringement. Use the information at your own risk, and the author
+assumes no responsibility for any issues or damages that may arise from its
+use.
+
+This guide is written by "Techflash" (Michael Garofalo), and is under the
+Creative Commons CC BY-NC-SA 4.0 License, available at the link below.
+https://creativecommons.org/licenses/by-nc-sa/4.0/
+
+You may redistribute this guide under the same license, however attribution
+is required, and you may not use it for commercial purposes.
