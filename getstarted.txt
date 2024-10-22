@@ -6,7 +6,7 @@ to use a few basic functions of your system.
 
 A few notes on the formatting of this guide:
 
-- A word with brakckets, like "this[5]" refers to a section number.
+- A word with brackets, like "this[5]" refers to a section number.
   If you want more info about that topic, skip to that section of the guide.
 
 - You may use the Page Up and Page Down keys on your keyboard to scroll
