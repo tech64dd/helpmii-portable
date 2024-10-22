@@ -52,7 +52,7 @@ Firstly, you'll want to verify that your network adapter is detected:
         that's your USB WiFi adapter.
 
         If you don't see it, your adapter may not be supported by this
-        kernel version.  You may want to contact support[3] if you
+        kernel version.  You may want to contact support[4] if you
         want to check.
         
 Here's a few cases for how you could do so:
@@ -62,7 +62,7 @@ Here's a few cases for how you could do so:
 
         If it's not working, check that the cable is clicked all the way
         in on both sides.  If it's still not working, or you don't see
-        the interface name, contact support[3].
+        the interface name, contact support[4].
 
   - Connection via Ethernet with a static address
         You can configure this with NetworkManager.
@@ -100,12 +100,12 @@ Here's a few cases for how you could do so:
         3.  Chose your WiFi network, under the Wi-Fi section.
             Don't see anything?  Try pressing 'ESC' on your keyboard a few
             times to exit out of `nmtui`, then try starting it back up again.
-            Still don't see it?  Contact support[3].
+            Still don't see it?  Contact support[4].
         4.  If your network requires a password, NetworkManager will prompt
             you for it.  Enter it, and it should connect.
             If it didn't connect (asking you for the password again), you
             likely typed it wrong.  If it keeps doing this, but you're
-            sure that you entered it correctly, contact support[3].
+            sure that you entered it correctly, contact support[4].
         5.  You're now connected!
             Exit `nmtui` by following the path, or press 'ESC' a few times.
 
@@ -119,13 +119,23 @@ Here's a few cases for how you could do so:
         ensure to chose the network listed under your USB adapter,
         rather than the builtin one.
 
-3. Contacting support
+
+3. Other questions / help
+=========================
+
+Should you need help with anything else not covered in this guide, you
+can refer to other online resources, such as the Arch Wiki.
+
+If it's Wii-Linux specific, or you can't find anything that helps,
+do reach out (see below).
+
+
+4. Contacting support
 =====================
 
 Should you need help with your Wii Linux install, we're here to help!
 Run the `helpmii` program for steps for how to get help, or, should
 you be unable to do so, join the Discord server linked on wii-linux.org!
-
 
 Legal Info
 ==========
