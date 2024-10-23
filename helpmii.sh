@@ -32,7 +32,7 @@ while true; do
     "2" "Get Started guide" \
     "3" "Upload logs" \
     "4" "Initiate Reverse Shell (!!!)" \
-    "5" "Quit" \
+    "0" "Quit" \
     2>&1 1>&3)
   exit_status=$?
   exec 3>&-
@@ -76,7 +76,7 @@ while true; do
         1) clear;;
       esac
       ;;
-    5 )
+    0 )
       clear
       exit
       ;;
