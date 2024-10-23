@@ -53,6 +53,7 @@ while true; do
       read -n 1 -s -r -p "Press any key to continue...";printf "\n"
       ;;
     2 )
+      clear
       less ./getstarted.txt
       ;;
     3 )
