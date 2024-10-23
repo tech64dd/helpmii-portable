@@ -57,8 +57,13 @@ while true; do
       ;;
     3 )
       clear
+      dmesg > ./dmesg.log
+      tar cvzf ./logs.tar.gz ./dmesg.log
+      clear
       printf "Uploading logs, please wait...\n"
-      # curl bashupload.com -s -T veryreal.log
+      curl bashupload.com -s -T ./logs.tar.gz
+      rm ./logs.tar.gz
+      rm ./dmesg.log
       printf "Show the text above to whoever is helping you in the Wii Discord server\n"
       read -n 1 -s -r -p "Press any key to continue...";printf "\n"
       ;;
