@@ -29,7 +29,7 @@ while true; do
     --cancel-label "Cancel" \
     --menu "Select an option:" $HEIGHT $WIDTH 4 \
     "1" "Join the Wii Linux Discord" \
-    "2" "User Guides" \
+    "2" "Get Started guide" \
     "3" "Upload logs" \
     "4" "Initiate Reverse Shell (!!!)" \
     "5" "Quit" \
@@ -53,7 +53,7 @@ while true; do
       read -n 1 -s -r -p "Press any key to continue...";printf "\n"
       ;;
     2 )
-      exec ./manualsel.sh
+      less ./getstarted.txt
       ;;
     3 )
       clear
