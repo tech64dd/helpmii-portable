@@ -6,7 +6,7 @@ to use a few basic functions of your system.
 
 A few notes on the formatting of this guide:
 
-- A word with brackets, like "this[5]" refers to a section number.
+- A word with brackets, like "this[6]" refers to a section number.
   If you want more info about that topic, skip to that section of the guide.
 
 - You may use the Page Up and Page Down keys on your keyboard to scroll
@@ -20,10 +20,11 @@ Table of contents
 =================
 
 Section 1 - Basic system navigation
-Section 2 - Setting up networking access
-Section 3 - Enabling swap space and ZRAM
-Section 4 - Other questions / help
-Section 5 - Contacting support
+Section 2 - Editing text files
+Section 3 - Setting up networking access
+Section 4 - Enabling swap space and ZRAM
+Section 5 - Other questions / help
+Section 6 - Contacting support
 
 
 1. Basic system navigation
@@ -43,7 +44,29 @@ exiting and re-entering the guide every time.
 To exit this guide at any time, press 'Q' on your keyboard.
 
 
-2. Setting up networking access
+2. Editing text files
+=====================
+
+Wii Linux ArchPOWER comes with 2 text editors pre-installed.
+`vim`, and `nano`.  If you aren't already familiar with `vim`, I would
+recommend using `nano`, as it behaves much more like text editors that
+you may already be used to.
+
+To edit a text file, use the following steps:
+  1. Run the command `[editor] /path/to/file` - replacing '[editor]' with
+     your editor of choice, either `vim` or `nano`.  As well, replace
+     '/path/to/file' with the path to the file that you desire to edit.
+  2. Make any modifications to the file that you want
+  3. Save and quit the file.  Here's how you do that in each editor:
+     `vim`: '<ESC><ESC>' to get out of whatever mode you're in, back to
+     normal mode.  ':' to enter command mode. 'wq<Enter>' to send the
+     command to *W*rite the file, and *Q*uit.
+
+     `nano`: '<Ctrl-X>' to tell `nano` to exit.  'Y' to confirm saving
+     the file.  '<Enter>' to confirm the file path.
+
+
+3. Setting up networking access
 ===============================
 
 You'll probably want to give your Wii access to the internet.
@@ -62,7 +85,7 @@ Firstly, you'll want to verify that your network adapter is detected:
         that's your USB WiFi adapter.
 
         If you don't see it, your adapter may not be supported by this
-        kernel version.  You may want to contact support[5] if you
+        kernel version.  You may want to contact support[6] if you
         want to check.
         
 Here's a few cases for how you could do so:
@@ -72,7 +95,7 @@ Here's a few cases for how you could do so:
 
         If it's not working, check that the cable is clicked all the way
         in on both sides.  If it's still not working, or you don't see
-        the interface name, contact support[5].
+        the interface name, contact support[6].
 
   - Connection via Ethernet with a static address
         You can configure this with NetworkManager.
@@ -110,12 +133,12 @@ Here's a few cases for how you could do so:
         3.  Chose your WiFi network, under the Wi-Fi section.
             Don't see anything?  Try pressing 'ESC' on your keyboard a few
             times to exit out of `nmtui`, then try starting it back up again.
-            Still don't see it?  Contact support[5].
+            Still don't see it?  Contact support[6].
         4.  If your network requires a password, NetworkManager will prompt
             you for it.  Enter it, and it should connect.
             If it didn't connect (asking you for the password again), you
             likely typed it wrong.  If it keeps doing this, but you're
-            sure that you entered it correctly, contact support[5].
+            sure that you entered it correctly, contact support[6].
         5.  You're now connected!
             Exit `nmtui` by following the path, or press 'ESC' a few times.
 
@@ -129,8 +152,66 @@ Here's a few cases for how you could do so:
         ensure to chose the network listed under your USB adapter,
         rather than the builtin one.
 
+4. Enabling swap space and ZRAM
+===============================
 
-4. Other questions / help
+Enabling swap space is quite easy.
+
+If you wanted to use a swap partition, and you don't have one right now,
+you've messed up, and it's probably not worth mucking around to try to
+create one.  Simply use a swap file instead.
+
+Regardless of file of partition, this is the setup process:
+  '[your swap]' refers to the location that you want to swap to.
+  This could be a file (e.g. '/swapfile'), a dedicated device
+  (e.g. '/dev/sdb'), or a partition (e.g. '/dev/mmcblk0p3').
+
+  1. ONCE (and only once, don't do this again just to re-enable), run
+     `mkswap [your swap]`
+  2. To enable it for the current boot, run `swapon [your swap]`
+     (you can, intuitively, use `swapoff [your swap]` to disable it).
+  3. To turn it on automatically on boot, add the following line to
+     the bottom of '/etc/fstab', using your editor[2] of choice.
+        '[your swap]     none    swap    defaults   0 0'
+  4. Make the line neat and line up with the rest, if desired.
+  5. Save and quit the file[2].
+
+Done!  You've now enabled swap-to-disk, for the current boot, and any future
+boot.
+
+Now, if you would like to enable ZRAM (a RAMDisk that compresses it's
+contents, and can be swapped to, it's a little more involved, but mostly the
+same process as above.  ZRAM is faster than swap-to-disk, but it involves
+spending CPU time to compress the RAM.  It's up to you if this is a
+worthwhile tradeoff.  If you aren't doing CPU-intensive workloads, but more
+RAM-intensive ones, it may be.
+  This process is mostly the same as it is shown on the Arch Wiki, here
+  https://wiki.archlinux.org/title/Zram
+  If you would like more info about ZRAM, you can view that page.
+
+  1. Create and edit[2] the file '/etc/modules-load.d/zram.conf'.
+     Place the word 'zram' in it.
+  2. Save and quit the file[2].
+  3. Create and edit the file '/etc/udev/rules.d/99-zram.rules'.
+
+     It may be helpful to do this over SSH from another machine, or via
+     a graphical terminal app on your Wii, so that you can copy-paste it.
+
+     Place the following line into it.  It should all be one line.
+     Remove the '\'s, those simply mean that this lean continues to the next
+     within this help document.
+       ACTION=="add", KERNEL=="zram0", ATTR{comp_algorithm}="zstd", \
+       ATTR{disksize}="100M", RUN="/usr/bin/mkswap -U clear /dev/%k", \
+       TAG+="systemd"
+  4. Save and quit the file, after making sure that you typed it correctly.
+  5. Follow step 3 through 5 of the above guide for swap-to-disk, to
+     enable it in '/etc/fstab'.  Do not try to enable it yet, as the device
+     does not exist.
+  6. Reboot your Wii for the changes to take effect.  If you run `swapon`
+     with no parameters, you should now see '/dev/zram0' listed in it.
+
+
+5. Other questions / help
 =========================
 
 Should you need help with anything else not covered in this guide, you
@@ -140,7 +221,7 @@ If it's Wii-Linux specific, or you can't find anything that helps,
 do reach out (see below).
 
 
-5. Contacting support
+6. Contacting support
 =====================
 
 Should you need help with your Wii Linux install, we're here to help!
