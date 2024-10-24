@@ -16,6 +16,16 @@ A few notes on the formatting of this guide:
   execute on your system.
 
 
+Table of contents
+=================
+
+Section 1 - Basic system navigation
+Section 2 - Setting up networking access
+Section 3 - Enabling swap space and ZRAM
+Section 4 - Other questions / help
+Section 5 - Contacting support
+
+
 1. Basic system navigation
 ==========================
 
@@ -52,7 +62,7 @@ Firstly, you'll want to verify that your network adapter is detected:
         that's your USB WiFi adapter.
 
         If you don't see it, your adapter may not be supported by this
-        kernel version.  You may want to contact support[4] if you
+        kernel version.  You may want to contact support[5] if you
         want to check.
         
 Here's a few cases for how you could do so:
@@ -62,7 +72,7 @@ Here's a few cases for how you could do so:
 
         If it's not working, check that the cable is clicked all the way
         in on both sides.  If it's still not working, or you don't see
-        the interface name, contact support[4].
+        the interface name, contact support[5].
 
   - Connection via Ethernet with a static address
         You can configure this with NetworkManager.
@@ -100,12 +110,12 @@ Here's a few cases for how you could do so:
         3.  Chose your WiFi network, under the Wi-Fi section.
             Don't see anything?  Try pressing 'ESC' on your keyboard a few
             times to exit out of `nmtui`, then try starting it back up again.
-            Still don't see it?  Contact support[4].
+            Still don't see it?  Contact support[5].
         4.  If your network requires a password, NetworkManager will prompt
             you for it.  Enter it, and it should connect.
             If it didn't connect (asking you for the password again), you
             likely typed it wrong.  If it keeps doing this, but you're
-            sure that you entered it correctly, contact support[4].
+            sure that you entered it correctly, contact support[5].
         5.  You're now connected!
             Exit `nmtui` by following the path, or press 'ESC' a few times.
 
@@ -120,7 +130,7 @@ Here's a few cases for how you could do so:
         rather than the builtin one.
 
 
-3. Other questions / help
+4. Other questions / help
 =========================
 
 Should you need help with anything else not covered in this guide, you
@@ -130,7 +140,7 @@ If it's Wii-Linux specific, or you can't find anything that helps,
 do reach out (see below).
 
 
-4. Contacting support
+5. Contacting support
 =====================
 
 Should you need help with your Wii Linux install, we're here to help!
