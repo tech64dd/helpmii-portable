@@ -209,7 +209,7 @@ RAM-intensive ones, it may be.
      a graphical terminal app on your Wii, so that you can copy-paste it.
 
      Place the following line into it.  It should all be one line.
-     Remove the '\'s, those simply mean that this lean continues to the next
+     Remove the '\'s, those simply mean that this line continues to the next
      within this help document.
        ACTION=="add", KERNEL=="zram0", ATTR{comp_algorithm}="zstd", \
        ATTR{disksize}="100M", RUN="/usr/bin/mkswap -U clear /dev/%k", \
