@@ -168,7 +168,7 @@ Regardless of file of partition, this is the setup process:
   
   If you want a swap file, and it doesn't already exist, you should
   create it now - run the following command, setting the size
-  appropriately for your usecase.  (8GB should be enoug for everything)
+  appropriately for your usecase.  (8GB should be enough for everything)
 
     `fallocate -l [size] /swapfile`
 
