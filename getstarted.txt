@@ -165,6 +165,17 @@ Regardless of file of partition, this is the setup process:
   '[your swap]' refers to the location that you want to swap to.
   This could be a file (e.g. '/swapfile'), a dedicated device
   (e.g. '/dev/sdb'), or a partition (e.g. '/dev/mmcblk0p3').
+  
+  If you want a swap file, and it doesn't already exist, you should
+  create it now - run the following command, setting the size
+  appropriately for your usecase.  (8GB should be enoug for everything)
+
+    `fallocate -l [size] /swapfile`
+
+  After running that to generate a swapfile (again, if you desire to
+  swap to a file rather than a partition), you should be fine to
+  follow the below guide.
+
 
   1. ONCE (and only once, don't do this again just to re-enable), run
      `mkswap [your swap]`
