@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export VERSION="v1.1"
+export VERSION="v1.2"
 
 export left_text="HelpMii Wii Linux Support Program"
 export right_text="$VERSION"
