@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/bin/sh
 
-export VERSION="v1.2"
+export VERSION="v1.3"
 
 export left_text="HelpMii Wii Linux Support Program"
 export right_text="$VERSION"
@@ -13,6 +13,12 @@ else
 	echo "failed to load util-dialog.sh"
 	exit 1
 fi
+
+if [ "$UTIL_VER_STR" = "Wii Linux Common Dialog Utilities version 1.0" ]; then
+	printf "\033[1;31mYou have %s, you need v1.1 or later.\033[0m\n" "$UTIL_VER_STR"
+	exit 1
+fi
+
 
 while true; do
 	menu "Main Menu" \
@@ -27,7 +33,7 @@ while true; do
 		1)
 			clear
 			cat discord_qr.txt
-			read -n 1 -s -r -p "Press any key to continue..."; echo ;;
+			wait1key "Press any key to continue..."; echo ;;
 		2)
 			clear
 			less ./getstarted.txt ;;
@@ -38,7 +44,7 @@ while true; do
 			curl bashupload.com -s -T /tmp/logs.txt.gz
 			rm -f /tmp/logs.txt.gz
 			echo "Show the above texe to whoever is helping you in the Wii Linux Discord server"
-			read -n 1 -s -r -p "Press any key to continue..."; echo ;;
+			wait1key "Press any key to continue..."; echo ;;
 		9) info "About" "HelpMii - The Wii Linux Support Program.\n\nHelpMii Version $VERSION\nUsing $UTIL_VER_STR\n\nHelpMii was made by Techflash, Tech64, and other contributors.\nThis program is licensed under the terms of the GNU General Public License, version 2.\nYou may find these terms under the HelpMii install directory, under the LICENSE file." 15 70 ;;
 		0|255)
 			clear
