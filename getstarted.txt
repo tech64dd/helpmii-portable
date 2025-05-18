@@ -212,7 +212,7 @@ RAM-intensive ones, it may be.
      Remove the '\'s, those simply mean that this line continues to the next
      within this help document.
        ACTION=="add", KERNEL=="zram0", ATTR{comp_algorithm}="zstd", \
-       ATTR{disksize}="100M", RUN="/usr/bin/mkswap -U clear /dev/%k", \
+       ATTR{disksize}="64M", RUN="/usr/bin/mkswap -U clear /dev/%k", \
        TAG+="systemd"
   4. Save and quit the file, after making sure that you typed it correctly.
   5. Follow step 3 through 5 of the above guide for swap-to-disk, to
