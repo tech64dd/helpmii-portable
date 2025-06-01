@@ -43,7 +43,7 @@ while true; do
 			echo "Uploading logs, please wait..."
 			curl bashupload.com -s -T /tmp/logs.txt.gz
 			rm -f /tmp/logs.txt.gz
-			echo "Show the above texe to whoever is helping you in the Wii Linux Discord server"
+			echo "Show the above text to whoever is helping you in the Wii Linux Discord server"
 			wait1key "Press any key to continue..."; echo ;;
 		9) info "About" "HelpMii - The Wii Linux Support Program.\n\nHelpMii Version $VERSION\nUsing $UTIL_VER_STR\n\nHelpMii was made by Techflash, Tech64, and other contributors.\nThis program is licensed under the terms of the GNU General Public License, version 2.\nYou may find these terms under the HelpMii install directory, under the LICENSE file." 15 70 ;;
 		0|255)
